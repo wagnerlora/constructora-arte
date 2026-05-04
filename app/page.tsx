@@ -667,16 +667,19 @@ export default function ConstructoraArte() {
       <section id="servicios" className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-4xl font-bold text-center mb-4">Servicios de construcción y remodelación</h3>
-          <p className="text-center text-gray-600 mb-16 max-w-3xl mx-auto">
-            Trabajamos proyectos residenciales, comerciales e institucionales: baños modernos, cocinas, pisos, terminaciones, estructuras metálicas, impermeabilización de techos y supervisión técnica.
+          <p className="text-center text-gray-600 mb-6 max-w-4xl mx-auto">
+            En Constructora Arte ofrecemos servicios de remodelación de baños, cocinas, apartamentos y locales comerciales en Santo Domingo, Gazcue, Piantini, Arroyo Hondo y otras zonas de República Dominicana.
+          </p>
+          <p className="text-center text-gray-500 mb-16 max-w-4xl mx-auto text-sm">
+            También ejecutamos obras civiles, estructuras metálicas, construcción general, supervisión técnica e impermeabilización de techos con manta asfáltica y soluciones profesionales contra filtraciones.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { titulo: 'Construcción de Obras', descripcion: 'Ejecución de obras civiles y edificaciones con altos estándares de calidad, seguridad y cumplimiento en cada etapa del proyecto.' },
-              { titulo: 'Remodelaciones', descripcion: 'Transformamos tus espacios, ya sea tu baño, cocina o cualquier área de tu hogar o negocio, con acabados modernos y funcionales.' },
+              { titulo: 'Construcción de Obras', descripcion: 'Construcción y ejecución de obras civiles, estructuras, ampliaciones y proyectos residenciales o comerciales con control técnico, planificación y cumplimiento en cada etapa.' },
+              { titulo: 'Remodelaciones', descripcion: 'Remodelación de baños, cocinas, apartamentos y locales comerciales en Santo Domingo, con terminaciones modernas, funcionales y enfocadas en aumentar el valor del inmueble.' },
               { titulo: 'Diseño Arquitectónico', descripcion: 'Diseños estándar, ajustados a tus gustos, minimalistas o modernos, desarrollados para combinar estética, funcionalidad y eficiencia.' },
               { titulo: 'Supervisión de Proyectos', descripcion: 'Supervisión profesional con cumplimiento de las normas ACI 318, ACI 318R y demás estándares aplicables, incluyendo pruebas de concreto y control de calidad.' },
-              { titulo: 'Impermeabilización', descripcion: 'Instalación de mantas asfálticas italianas lisas y granuladas de alta calidad, aplicadas por profesionales con más de 10 años de experiencia.' },
+              { titulo: 'Impermeabilización', descripcion: 'Impermeabilización de techos, losas y azoteas con manta asfáltica y sistemas contra filtraciones, aplicados por profesionales con experiencia en mantenimiento preventivo y correctivo.' },
               { titulo: 'Consultoría Técnica', descripcion: 'Visitas técnicas y asesorías personalizadas, adaptadas a tus necesidades y a las condiciones particulares de cada proyecto.' }
             ].map((servicio) => (
               <div key={servicio.titulo} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition">
