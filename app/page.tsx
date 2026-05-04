@@ -543,6 +543,26 @@ const proyectos = [
 
 export default function ConstructoraArte() {
   const [proyectoActivo, setProyectoActivo] = useState<any>(null)
+  const [nombreContacto, setNombreContacto] = useState('')
+  const [correoContacto, setCorreoContacto] = useState('')
+  const [mensajeContacto, setMensajeContacto] = useState('')
+
+  const telefonoWhatsApp = '18099073100'
+  const mensajeWhatsAppBase = encodeURIComponent('Hola, vengo de la página web de Constructora Arte. Me gustaría solicitar una cotización para un proyecto.')
+  const enlaceWhatsApp = `https://wa.me/${telefonoWhatsApp}?text=${mensajeWhatsAppBase}`
+
+  const enviarFormulario = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const mensaje = encodeURIComponent(
+      `Hola, vengo de la página web de Constructora Arte.%0A%0A` +
+      `Nombre: ${nombreContacto}%0A` +
+      `Correo: ${correoContacto}%0A%0A` +
+      `Mensaje:%0A${mensajeContacto}`
+    )
+
+    window.open(`https://wa.me/${telefonoWhatsApp}?text=${mensaje}`, '_blank')
+  }
 
   const carpetasConFotosReales = [  '/images/bano-gazcue2/',
   '/images/bano-gazcue/',
@@ -609,7 +629,7 @@ export default function ConstructoraArte() {
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
             Expertos en construcción, remodelación, diseño arquitectónico, supervisión e impermeabilización.
           </p>
-          <a href="https://wa.me/18099073100" target="_blank" className="inline-block bg-yellow-500 text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-yellow-400 transition">
+          <a href={enlaceWhatsApp} target="_blank" className="inline-block bg-yellow-500 text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-yellow-400 transition">
             Solicitar Cotización
           </a>
         </div>
@@ -714,18 +734,42 @@ export default function ConstructoraArte() {
             </div>
           </div>
 
-          <form className="space-y-6 bg-white text-gray-900 p-8 rounded-2xl shadow-2xl">
-            <input type="text" placeholder="Nombre" className="w-full p-4 rounded-xl border border-gray-300" />
-            <input type="email" placeholder="Correo Electrónico" className="w-full p-4 rounded-xl border border-gray-300" />
-            <textarea rows={5} placeholder="Cuéntanos sobre tu proyecto" className="w-full p-4 rounded-xl border border-gray-300"></textarea>
+          <form onSubmit={enviarFormulario} className="space-y-6 bg-white text-gray-900 p-8 rounded-2xl shadow-2xl">
+            <input
+              type="text"
+              placeholder="Nombre"
+              value={nombreContacto}
+              onChange={(e) => setNombreContacto(e.target.value)}
+              required
+              className="w-full p-4 rounded-xl border border-gray-300"
+            />
+            <input
+              type="email"
+              placeholder="Correo Electrónico"
+              value={correoContacto}
+              onChange={(e) => setCorreoContacto(e.target.value)}
+              required
+              className="w-full p-4 rounded-xl border border-gray-300"
+            />
+            <textarea
+              rows={5}
+              placeholder="Cuéntanos sobre tu proyecto"
+              value={mensajeContacto}
+              onChange={(e) => setMensajeContacto(e.target.value)}
+              required
+              className="w-full p-4 rounded-xl border border-gray-300"
+            ></textarea>
             <button type="submit" className="w-full bg-yellow-500 text-slate-900 py-4 rounded-xl font-bold hover:bg-yellow-400 transition">
-              Enviar Mensaje
+              Enviar por WhatsApp
             </button>
+            <p className="text-sm text-gray-500 text-center">
+              Al enviar, se abrirá WhatsApp con tu mensaje listo para confirmar.
+            </p>
           </form>
         </div>
       </section>
 
-      <a href="https://wa.me/18099073100" target="_blank" className="fixed bottom-6 right-6 z-[90] bg-green-500 text-white px-5 py-4 rounded-full shadow-2xl font-bold hover:bg-green-600 transition">
+      <a href={enlaceWhatsApp} target="_blank" className="fixed bottom-6 right-6 z-[90] bg-green-500 text-white px-5 py-4 rounded-full shadow-2xl font-bold hover:bg-green-600 transition">
         WhatsApp
       </a>
 
