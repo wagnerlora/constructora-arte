@@ -564,6 +564,9 @@ export default function ConstructoraArte() {
     window.open(`https://wa.me/${telefonoWhatsApp}?text=${mensaje}`, '_blank')
   }
 
+  const crearAltSEO = (proyecto: any, index = 0) =>
+    `${proyecto.categoria} - ${proyecto.nombre} en Santo Domingo, República Dominicana${index > 0 ? ` foto ${index + 1}` : ''}`
+
   const carpetasConFotosReales = [  '/images/bano-gazcue2/',
   '/images/bano-gazcue/',
   '/images/bano-los-prados/',
@@ -651,9 +654,9 @@ export default function ConstructoraArte() {
 
       <section id="inicio" className="bg-gradient-to-r from-slate-800 to-slate-700 text-white py-24 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-5xl md:text-7xl font-extrabold mb-6">Construimos tus ideas</h2>
+          <h2 className="text-5xl md:text-7xl font-extrabold mb-6">Remodelación y construcción en Santo Domingo</h2>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Expertos en construcción, remodelación, diseño arquitectónico, supervisión e impermeabilización.
+            Constructora Arte realiza remodelación de cocinas, baños, apartamentos, locales comerciales, impermeabilización y obras civiles en Gazcue, Santo Domingo y toda República Dominicana.
           </p>
           <a href={enlaceWhatsApp} target="_blank" className="inline-block bg-yellow-500 text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-yellow-400 transition">
             Solicitar Cotización
@@ -663,7 +666,10 @@ export default function ConstructoraArte() {
 
       <section id="servicios" className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-4xl font-bold text-center mb-16">Nuestros Servicios</h3>
+          <h3 className="text-4xl font-bold text-center mb-4">Servicios de construcción y remodelación</h3>
+          <p className="text-center text-gray-600 mb-16 max-w-3xl mx-auto">
+            Trabajamos proyectos residenciales, comerciales e institucionales: baños modernos, cocinas, pisos, terminaciones, estructuras metálicas, impermeabilización de techos y supervisión técnica.
+          </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { titulo: 'Construcción de Obras', descripcion: 'Ejecución de obras civiles y edificaciones con altos estándares de calidad, seguridad y cumplimiento en cada etapa del proyecto.' },
@@ -684,8 +690,8 @@ export default function ConstructoraArte() {
 
       <section id="proyectos" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-4xl font-bold text-center mb-4">Galería de Proyectos</h3>
-          <p className="text-center text-gray-600 mb-16">Haz clic en cualquier proyecto para ver sus fotos.</p>
+          <h3 className="text-4xl font-bold text-center mb-4">Proyectos realizados en Santo Domingo</h3>
+          <p className="text-center text-gray-600 mb-16">Galería de remodelaciones de cocinas, baños, terrazas, apartamentos, locales comerciales e impermeabilización. Haz clic en cualquier proyecto para ver sus fotos.</p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {proyectosConFotos.map((proyecto) => (
@@ -696,7 +702,7 @@ export default function ConstructoraArte() {
               >
                 <img
                   src={proyecto.imagenes[0]}
-                  alt={proyecto.nombre}
+                  alt={crearAltSEO(proyecto)}
                   onError={(e) => {
                     const img = e.currentTarget
                     const segundaImagen = proyecto.imagenes[1]
@@ -737,7 +743,7 @@ export default function ConstructoraArte() {
                 <img
                   key={img}
                   src={img}
-                  alt={`${proyectoActivo.nombre} ${index + 1}`}
+                  alt={crearAltSEO(proyectoActivo, index)}
                   onError={(e) => {
                     e.currentTarget.style.display = 'none'
                   }}
@@ -805,5 +811,6 @@ export default function ConstructoraArte() {
     </div>
   )
 }
+
 
 
