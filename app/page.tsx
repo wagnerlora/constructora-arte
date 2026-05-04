@@ -691,7 +691,12 @@ export default function ConstructoraArte() {
       <section id="proyectos" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-4xl font-bold text-center mb-4">Proyectos realizados en Santo Domingo</h3>
-          <p className="text-center text-gray-600 mb-16">Galería de remodelaciones de cocinas, baños, terrazas, apartamentos, locales comerciales e impermeabilización. Haz clic en cualquier proyecto para ver sus fotos.</p>
+          <p className="text-center text-gray-600 max-w-4xl mx-auto mb-6">
+            En Constructora Arte contamos con amplia experiencia en remodelación de cocinas, baños, apartamentos y locales comerciales en Santo Domingo, especialmente en zonas como Gazcue, Piantini y Arroyo Hondo. También realizamos impermeabilización de techos y obras civiles con altos estándares de calidad y terminaciones modernas.
+          </p>
+          <p className="text-center text-gray-500 max-w-3xl mx-auto mb-16 text-sm">
+            Si buscas una constructora en Santo Domingo para remodelar tu baño, cocina o apartamento, aquí puedes ver ejemplos reales de nuestros trabajos.
+          </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {proyectosConFotos.map((proyecto) => (
@@ -811,6 +816,5 @@ export default function ConstructoraArte() {
     </div>
   )
 }
-
 
 
