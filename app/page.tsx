@@ -601,8 +601,38 @@ export default function ConstructoraArte() {
   '/images/pintura-externa-edificio-corporativo-profamilia/'
 ]
 
+  // 🔥 Ordenar proyectos por prioridad (los que más venden primero)
+  const proyectosPrioritarios = [
+    'Terraza Torre Jeshua 4',
+    'Cocina Torre Romanza',
+    'Cocina Torre Romanza (Primera Remodelación)',
+    'Baño Torre Romanza'
+  ]
+
   const proyectosConFotos = proyectos
     .filter((proyecto) =>
+      carpetasConFotosReales.some((carpeta) => proyecto.imagenes[0].startsWith(carpeta))
+    )
+    .filter((proyecto, index, lista) =>
+      index === lista.findIndex((item) => item.nombre === proyecto.nombre)
+    )
+    .map((proyecto) => {
+      // 🚫 Evitar que la primera imagen sea "antes" o collage
+      if (proyecto.nombre === 'Cocina Torre Romanza (Primera Remodelación)') {
+        const imagenesFiltradas = proyecto.imagenes.filter(img => !img.toLowerCase().includes('anterior'))
+        return { ...proyecto, imagenes: imagenesFiltradas }
+      }
+      return proyecto
+    })
+    .sort((a, b) => {
+      const aIndex = proyectosPrioritarios.indexOf(a.nombre)
+      const bIndex = proyectosPrioritarios.indexOf(b.nombre)
+
+      if (aIndex === -1 && bIndex === -1) return 0
+      if (aIndex === -1) return 1
+      if (bIndex === -1) return -1
+      return aIndex - bIndex
+    }) =>
       carpetasConFotosReales.some((carpeta) => proyecto.imagenes[0].startsWith(carpeta))
     )
     .filter((proyecto, index, lista) =>
