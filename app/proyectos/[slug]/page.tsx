@@ -45,7 +45,9 @@ export default function ProyectoPage({
 }: {
   params: { slug: string }
 }) {
-  const proyecto = proyectos.find((p) => p.slug === params.slug)
+const proyecto = proyectos.find(
+  (p) => p.slug.trim().toLowerCase() === params.slug.trim().toLowerCase()
+)
 
   if (!proyecto) {
     return (
