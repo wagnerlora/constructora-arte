@@ -1,53 +1,16 @@
-import Link from 'next/link'
+# Reemplaza TODO el inicio de tu `page.tsx` por este bloque
 
-const proyectos = [
-  {
-    slug: 'terraza-torre-jeshua-4',
-    nombre: 'Terraza Torre Jeshua 4',
-    categoria: 'Remodelación residencial / Terraza',
-    descripcion:
-      'Proyecto de remodelación de terraza moderna en Santo Domingo realizado por Constructora Arte.',
-    imagenes: [
-      '/images/terraza-torre-jeshua4/20180424_111649.jpg',
-      '/images/terraza-torre-jeshua4/20180425_101403.jpg',
-      '/images/terraza-torre-jeshua4/20180425_152951.jpg',
-    ],
-  },
-
-  {
-    slug: 'cocina-torre-romanza',
-    nombre: 'Cocina Torre Romanza',
-    categoria: 'Remodelación de cocina',
-    descripcion:
-      'Remodelación moderna de cocina en Torre Romanza con terminaciones elegantes y funcionales.',
-    imagenes: [
-      '/images/cocina-torre-romanza-1.jpg',
-      '/images/cocina-torre-romanza-2.jpg',
-    ],
-  },
-
-  {
-    slug: 'bano-torre-romanza',
-    nombre: 'Baño Torre Romanza',
-    categoria: 'Remodelación de baño',
-    descripcion:
-      'Proyecto de remodelación de baño moderno en Santo Domingo con porcelanato y terminaciones premium.',
-    imagenes: [
-      '/images/bano-torre-romanza/Foto0509.jpg',
-      '/images/bano-torre-romanza/Foto0516(1).jpg',
-      '/images/bano-torre-romanza/Foto0517(1).jpg',
-    ],
-  },
-]
-
-export default function ProyectoPage({
+```tsx
+export default async function ProyectoPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-const proyecto = proyectos.find(
-  (p) => p.slug.trim().toLowerCase() === params.slug.trim().toLowerCase()
-)
+  const { slug } = await params
+
+  const proyecto = proyectos.find(
+    (p) => p.slug.trim().toLowerCase() === slug.trim().toLowerCase()
+  )
 
   if (!proyecto) {
     return (
@@ -103,3 +66,12 @@ const proyecto = proyectos.find(
     </div>
   )
 }
+```
+
+## IMPORTANTE
+
+Debes borrar el bloque viejo repetido que tienes arriba.
+
+El error ocurrió porque quedaron DOS funciones `ProyectoPage` dentro del mismo archivo.
+
+Después de pegar este código, guarda el archivo y prueba nuevamente.
